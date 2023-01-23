@@ -1,6 +1,6 @@
 #!/bin/bash
 CHAIN_ID="okp4-nemeton-1"
-SNAP_PATH="$HOME/snapshots/okp4/"
+SNAP_PATH="$HOME/snapshots/okp4"
 LOG_PATH="$HOME/snapshots/okp4/okp4_log.txt"
 DATA_PATH="$HOME/.okp4d/data/"
 SERVICE_NAME="okp4d.service"
