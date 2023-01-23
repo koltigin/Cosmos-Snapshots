@@ -8,7 +8,7 @@ sudo apt install curl git docker.io -y
 
 ## Repoyu Kolnlama
 ```
-git clone https://github.com/koltigin/Cosmos-Snaphots.git && cd cosmos-snapshots
+git clone https://github.com/koltigin/Cosmos-Snaphots.git && cd Cosmos-Snapshots
 ```
 
 ## snapshots Dosyası Oluşturma 
