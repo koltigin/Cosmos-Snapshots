@@ -39,7 +39,7 @@ SERVICE_NAME="okp4d.service"
 Değişkenleri dğzenlediğimiz `example_snapshot.sh` dosyasını `okp4_snapshot.sh` şeklinde değiştiriyoruz.
 
 ## Yeni Snapshot Oluşturma
-`./okp4_snapshot.sh`  
+`./Cosmos-Snapshots/scripts/okp4_snapshot.sh`  
 
 ## Snapshotu Kontrol Etme  
 ```bash
