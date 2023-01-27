@@ -56,10 +56,13 @@ SERVICE_NAME="okp4d.service"
 Değişkenleri düzenlediğimiz `example_snapshot.sh` dosyasını `okp4_snapshot.sh` şeklinde değiştiriyoruz.
 
 ## Yeni Snapshot Almak için Scripti Çalıştırma
-Öncelikle dosyaya okuma izimlerini veriyoruz.
-`chmod +x ./Cosmos-Snapshots/scripts/okp4_snapshot.sh`
+Öncelikle dosyaya çalıştırma izinini veriyoruz.
+```
+chmod +x ./Cosmos-Snapshots/scripts/okp4_snapshot.sh
+```
+
 Son olarak scripti çalıştırıyoruz.
-`./Cosmos-Snapshots/scripts/okp4_snapshot.sh`  
+`./Cosmos-Snapshots/scripts/okp4_snapshot.sh`
 
 ## Snapshotu Kontrol Etme  
 Snapshot alma işlemi tamamlandığında ilgili dosyayı
