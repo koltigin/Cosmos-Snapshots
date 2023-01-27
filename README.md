@@ -11,9 +11,26 @@ sudo apt install curl git docker.io -y
 git clone https://github.com/koltigin/Cosmos-Snapshots.git && cd Cosmos-Snapshots
 ```
 
-## snapshots Dosyası Oluşturma 
+## snapshots Klasörğ Oluşturma 
 ```
 mkdir $HOME/snapshots/
+```
+
+## snapshots Klasörü Oluşturma 
+```
+mkdir $HOME/snapshots/
+```
+
+## Snapshot Alınacak Node'un Klasörünü Oluşturma 
+Burada OKP4 dosyası oluşturulmuştur.
+```
+mkdir $HOME/snapshots/okp4
+```
+
+## Snapshot Alınacak Node'un Log Dosyasını Oluşturma 
+Burada OKP4 dosyası oluşturulmuştur.
+```
+touch $HOME/snapshots/okp4/okp4_log.txt
 ```
 
 ## Docker ile Nginx'i Başlatma
@@ -36,20 +53,43 @@ DATA_PATH="$HOME/.okp4d/data/"
 SERVICE_NAME="okp4d.service"
 ```
 
-Değişkenleri dğzenlediğimiz `example_snapshot.sh` dosyasını `okp4_snapshot.sh` şeklinde değiştiriyoruz.
+Değişkenleri düzenlediğimiz `example_snapshot.sh` dosyasını `okp4_snapshot.sh` şeklinde değiştiriyoruz.
 
-## Yeni Snapshot Oluşturma
+## Yeni Snapshot Almak için Scripti Çalıştırma
+Öncelikle dosyaya okuma izimlerini veriyoruz.
+`chmod +x ./Cosmos-Snapshots/scripts/okp4_snapshot.sh`
+Son olarak scripti çalıştırıyoruz.
 `./Cosmos-Snapshots/scripts/okp4_snapshot.sh`  
 
 ## Snapshotu Kontrol Etme  
-```bash
-MY_IP=$(curl -s 2ip.ru); \
-curl -s http://${MY_IP}
+Snapshot alma işlemi tamamlandığında ilgili dosyayı
+`/snapshots/okp4/` dosyası içerisinde görebilirsiniz.
+
+## Snapshot Alınmasını Otomatikleştirme
+Öncelikle cron yükleyip aktif hale getiriyoruz.
+```
+sudo apt install cron
+sudo systemctl enable cron
+```
+Aşağıdaki kod ile crontab doyasını düzenlemek için açıyoruz.
+```
+crontab -e
 ```
 
-## Snapshot Alınmasını Otomatikleştirme  
-Anlık görüntü alınma zamanını aşağıdaki kodla düzenleyebilirsiniz. 
+Aşağıdaki kodu dosyaya ekleyip ctrl x, y ve enter diyerek kaydediyoruz.
 ```cron
 # her gun saat 00:00'da baslat
-0 0 * * * /bin/bash -c '/root/okp4_snapshot.sh'
+0 0 * * * /bin/bash -c /root/okp4_snapshot.sh
+```
+
+Zaman ayarlamasının nasıl olacağını aşağıdan görebilirsiniz.
+```cron
+# İş tanımı örneği:
+# .---------------- dakika (0 - 59)
+# |  .------------- saat (0 - 23)
+# |  |  .---------- gün (1 - 31)
+# |  |  |  .------- ay (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- gün (0 - 6) (Pazar=0 ya da 7 olacak) YA DA yazıyla şu şekilde sun,mon,tue,wed,thu,fri,sat olarak belirtilecek.
+# |  |  |  |  |
+# 0  0  *  *  * /bin/bash -c /root/okp4_snapshot.sh
 ```
