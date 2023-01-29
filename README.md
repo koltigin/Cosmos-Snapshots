@@ -6,12 +6,12 @@ sudo apt update && \
 sudo apt install curl git docker.io -y
 ```
 
-## Repoyu Kolnlama
+## Repoyu Klonlama
 ```
 git clone https://github.com/koltigin/Cosmos-Snapshots.git && cd Cosmos-Snapshots
 ```
 
-## snapshots Klasörğ Oluşturma 
+## snapshots Klasörü Oluşturma 
 ```
 mkdir $HOME/snapshots/
 ```
@@ -82,7 +82,7 @@ crontab -e
 Aşağıdaki kodu dosyaya ekleyip ctrl x, y ve enter diyerek kaydediyoruz.
 ```cron
 # her gun saat 00:00'da baslat
-0 0 * * * /bin/bash -c /root/okp4_snapshot.sh
+0 0 * * * /bin/bash -c /root/Cosmos-Snapshots/scripts/okp4_snapshot.sh
 ```
 
 Zaman ayarlamasının nasıl olacağını aşağıdan görebilirsiniz.
@@ -94,5 +94,5 @@ Zaman ayarlamasının nasıl olacağını aşağıdan görebilirsiniz.
 # |  |  |  .------- ay (1 - 12) OR jan,feb,mar,apr ...
 # |  |  |  |  .---- gün (0 - 6) (Pazar=0 ya da 7 olacak) YA DA yazıyla şu şekilde sun,mon,tue,wed,thu,fri,sat olarak belirtilecek.
 # |  |  |  |  |
-# 0  0  *  *  * /bin/bash -c /root/okp4_snapshot.sh
+# 0  0  *  *  * /bin/bash -c /root/Cosmos-Snapshots/scripts/okp4_snapshot.sh
 ```
