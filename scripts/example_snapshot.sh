@@ -1,7 +1,7 @@
 #!/bin/bash
 CHAIN_ID="cosmos-1"
-SNAP_PATH="$HOME/snapshots/cosmos"
-LOG_PATH="$HOME/snapshots/cosmos/cosmos_log.txt"
+SNAP_PATH="$HOME/snapshots/testnet/cosmos"
+LOG_PATH="$HOME/snapshots/testnet/cosmos/cosmos_log.txt"
 DATA_PATH="$HOME/.cosmosd/data/"
 SERVICE_NAME="cosmosd.service"
 RPC_ADDRESS="http://localhost:PORT"
