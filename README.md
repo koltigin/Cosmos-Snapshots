@@ -14,13 +14,13 @@ git clone https://github.com/koltigin/Cosmos-Snapshots.git && cd Cosmos-Snapshot
 ## snapshots Klasörü ve Snapshot Alınacak Node'un Klasörünü Oluşturma 
 Burada OKP4 dosyası oluşturulmuştur.
 ```
-mkdir -p $HOME/snapshots/okp4
+mkdir -p $HOME/snapshots/testnet/okp4
 ```
 
 ## Snapshot Alınacak Node'un Log Dosyasını Oluşturma 
 Burada OKP4 dosyası oluşturulmuştur.
 ```
-touch $HOME/snapshots/okp4/okp4_log.txt
+touch $HOME/snapshots/testnet/okp4/okp4_log.txt
 ```
 
 ## Docker ile Nginx'i Başlatma
@@ -34,16 +34,19 @@ docker run --name snapshots \
 -d nginx
 ```
 
-## `example_snapshot.sh` Dosyasında Değişkenleri Ayarlama
+## `example_snapshot.sh` dosyasını `okp4_snapshot.sh` olarak kopyalıyoruz
+```bash
+cp $HOME/Cosmos-Snapshots/scripts/example_snapshot.sh $HOME/Cosmos-Snapshots/scripts/okp4_snapshot.sh
+```
+
+## `okp4_snapshot.sh` Dosyasında Değişkenleri Ayarlama
 ```
 CHAIN_ID="okp4-nemeton-1"
-SNAP_PATH="$HOME/snapshots/okp4"
-LOG_PATH="$HOME/snapshots/okp4/okp4_log.txt"
+SNAP_PATH="$HOME/snapshots/testnet/okp4"
+LOG_PATH="$HOME/snapshots/testnet/okp4/okp4_log.txt"
 DATA_PATH="$HOME/.okp4d/data/"
 SERVICE_NAME="okp4d.service"
 ```
-
-Değişkenleri düzenlediğimiz `example_snapshot.sh` dosyasını `okp4_snapshot.sh` şeklinde değiştiriyoruz.
 
 ## Yeni Snapshot Almak için Scripti Çalıştırma
 Öncelikle dosyaya çalıştırma izinini veriyoruz.
@@ -52,7 +55,9 @@ chmod +x ./Cosmos-Snapshots/scripts/okp4_snapshot.sh
 ```
 
 Son olarak scripti çalıştırıyoruz.
-`./Cosmos-Snapshots/scripts/okp4_snapshot.sh`
+```
+./Cosmos-Snapshots/scripts/okp4_snapshot.sh
+```
 
 ## Snapshotu Kontrol Etme  
 Snapshot alma işlemi tamamlandığında ilgili dosyayı
