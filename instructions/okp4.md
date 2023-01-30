@@ -14,8 +14,8 @@ cd ~/.okp4d/data
 
 ## Anlık görüntüyü İndirme  
 ```bash
-SNAP_NAME=$(curl -s https://adres.com/okp4/ | egrep -o ">okp4-nemeton-1.*tar" | tr -d ">"); \
-wget -O - https://adres.com/okp4/${SNAP_NAME} | tar xf -
+SNAP_NAME=$(curl -s https://adres.com/snapshots/testnet/okp4/ | egrep -o ">okp4-nemeton-1.*tar" | tr -d ">"); \
+wget -O - https://adres.com/snapshots/testnet/okp4/${SNAP_NAME} | tar xf -
 ```
 
 ## Servisi Başlatma ve Logları Kontrol Etme
