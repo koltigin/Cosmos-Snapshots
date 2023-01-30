@@ -1,7 +1,7 @@
 #!/bin/bash
 CHAIN_ID="okp4-nemeton-1"
-SNAP_PATH="$HOME/snapshots/okp4"
-LOG_PATH="$HOME/snapshots/okp4/okp4_log.txt"
+SNAP_PATH="$HOME/snapshots/testnet/okp4"
+LOG_PATH="$HOME/snapshots/testnet/okp4/okp4_log.txt"
 DATA_PATH="$HOME/.okp4d/data/"
 SERVICE_NAME="okp4d.service"
 RPC_ADDRESS="http://localhost:13657"
