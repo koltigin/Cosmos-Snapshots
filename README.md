@@ -23,7 +23,32 @@ Burada OKP4 dosyası oluşturulmuştur.
 touch $HOME/snapshots/testnet/okp4/okp4_log.txt
 ```
 
-## Docker ile Nginx'i Başlatma
+## Nginx Kurulumu
+```bash
+sudo apt-get install nginx -y
+sudo unlink /etc/nginx/sites-enabled/default
+```
+
+## Nginx'i Ayarlama ve Başlatma
+Aşağıdaki kodla snapshot yayınlayacağımız sitenin dizinini belirliyoruz. Burada dizin root içerisinde bulunan snapshots klasörü dizin olacak.
+```bash
+sudo tee <<EOF >/dev/null /etc/nginx/sites-available/file-server.conf
+server {
+    listen       80;
+    client_max_body_size 5G;
+    proxy_max_temp_file_size 0;
+    root /root/snapshots/;
+    autoindex on;
+}
+EOF
+sudo ln -s /etc/nginx/sites-available/file-server.conf /etc/nginx/sites-enabled/file-server.conf
+chmod o+x /root/snapshot
+chmod o+x /root/
+service nginx restart
+```
+
+### Alternatif: Docker ile Nginx'i Başlatma
+Yukarıdaki yaılandırma yerine docker ile yapılandırma yapmak isterseniz.
 ```bash
 cd $HOME; \
 docker run --name snapshots \
