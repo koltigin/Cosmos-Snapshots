@@ -16,8 +16,8 @@ cd ~/.cosmosd/data
 
 ## Anlık görüntüyü İndirme  
 ```bash
-SNAP_NAME=$(curl -s https://adres.com/cosmos/ | egrep -o ">cosmos-3.*tar" | tr -d ">"); \
-wget -O - https://adres.com/cosmos/${SNAP_NAME} | tar xf -
+SNAP_NAME=$(curl -s https://adres.com/snapshots/testnet/cosmos/ | egrep -o ">cosmos-3.*tar" | tr -d ">"); \
+wget -O - https://adres.com/snapshots/testnet/cosmos/${SNAP_NAME} | tar xf -
 ```
 
 ## Servisi Başlatma ve Logları Kontrol Etme
