@@ -11,20 +11,10 @@ sudo apt install curl git docker.io -y
 git clone https://github.com/koltigin/Cosmos-Snapshots.git && cd Cosmos-Snapshots
 ```
 
-## snapshots Klasörü Oluşturma 
-```
-mkdir $HOME/snapshots/
-```
-
-## snapshots Klasörü Oluşturma 
-```
-mkdir $HOME/snapshots/
-```
-
-## Snapshot Alınacak Node'un Klasörünü Oluşturma 
+## snapshots Klasörü ve Snapshot Alınacak Node'un Klasörünü Oluşturma 
 Burada OKP4 dosyası oluşturulmuştur.
 ```
-mkdir $HOME/snapshots/okp4
+mkdir -p $HOME/snapshots/okp4
 ```
 
 ## Snapshot Alınacak Node'un Log Dosyasını Oluşturma 
