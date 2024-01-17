@@ -1,12 +1,12 @@
 #!/bin/bash
 CHAIN_ID="cosmos-1"
-SNAP_PATH="$HOME/snapshots/snapshots/testnet/cosmos"
-LOG_PATH="$HOME/snapshots/snapshots/testnet/cosmos/cosmos_log.txt"
-DATA_PATH="$HOME/.cosmosd/data/"
-SERVICE_NAME="cosmosd.service"
+SNAP_PATH="$HOME/snapshots/okp4"
+LOG_PATH="$HOME/snapshots/okp4/okp4_log.txt"
+DATA_PATH="$HOME/.okp4d/data/"
+SERVICE_NAME="okp4d.service"
 RPC_ADDRESS="http://localhost:PORT"
-SNAP_NAME=$(echo "${CHAIN_ID}_$(date '+%Y-%m-%d').tar")
-OLD_SNAP=$(ls ${SNAP_PATH} | egrep -o "${CHAIN_ID}.*tar")
+SNAP_NAME=$(echo "${CHAIN_ID}_$(date '+%Y-%m-%d').tar.lz4")
+OLD_SNAP=$(ls ${SNAP_PATH} | egrep -o "${CHAIN_ID}.*tar.lz4")
 
 
 now_date() {
@@ -38,9 +38,12 @@ cd ${SNAP_PATH}
 rm -fv ${OLD_SNAP} &>>${LOG_PATH}
 
 log_this "Moving new snapshot to ${SNAP_PATH}"
-mv ${HOME}/${CHAIN_ID}*tar ${SNAP_PATH} &>>${LOG_PATH}
+mv ${HOME}/${CHAIN_ID}*tar.lz4 ${SNAP_PATH} &>>${LOG_PATH}
 
 
 du -hs ${SNAP_PATH} | tee -a ${LOG_PATH}
+
+log_this "Starting ${SERVICE_NAME}"
+systemctl restart ${SERVICE_NAME}; echo $? >> ${LOG_PATH}
 
 log_this "Done\n---------------------------\n"
